@@ -1,0 +1,28 @@
+﻿Bước 1: Thiết kế giải pháp (I/O)
+Bài toán: Dùng AI để kiểm tra và tính tiền đơn hàng tại cửa hàng công nghệ MartX.
+Input:
+-Mã đơn hàng
+-Tên sản phẩm
+-Số lượng
+-Đơn giá
+Output: Kết quả dạng JSON gồm mã đơn, tên sản phẩm, số lượng, đơn giá, thành tiền và trạng thái.
+Xử lý lỗi: Nếu thiếu dữ liệu thì báo "Cần bổ sung", nếu số lượng hoặc giá không hợp lệ thì báo "Lỗi dữ liệu", không tự điền thông tin.
+Bước 2: Viết prompt và chạy thử
+1. Prompt:
+"Bạn là nhân viên quản lý đơn hàng MartX. Hãy kiểm tra và tính tiền các đơn hàng sau, trả kết quả dạng JSON.
+* DH01: Bàn phím, 2 cái, 350.000đ/cái.
+* DH02: Chuột gaming, chưa có số lượng, 250.000đ/cái.
+Ví dụ: 2 sản phẩm giá 100.000đ thì thành tiền là 200.000đ. Nếu thiếu dữ liệu thì ghi null, báo Cần bổ sung. Nếu dữ liệu sai thì báo Lỗi dữ liệu, không tự đoán."
+2. Kết quả AI trả về:
+[
+  {
+    "ma_don": "DH01",
+    "thanh_tien": 700000,
+    "trang_thai": "Hợp lệ"
+  },
+  {
+    "ma_don": "DH02",
+    "thanh_tien": null,
+    "trang_thai": "Cần bổ sung"
+  }
+]
